@@ -2,7 +2,7 @@
   "devDependencies": {
     "tailwindcss": "^3.4.4"
     "scripts": {
-  "build": "tailwindcss build styles.css -o output.css"
+  "build": "tailwindcss build input.css -o output.css"
 }
   }
 }
