@@ -9,8 +9,6 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@400;600;700&display=swap"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"> -->
@@ -24,12 +22,12 @@
       }
     </style>
   </head>
-  <body>
+  <body class="">
     <div
       class="flex flex-col justify-center items-center font-noto-sans text-black"
     >
-      <!-- Navbar -->
-      <div class="flex justify-between items-center w-full px-4 py-3 bg-white">
+      <!-- navbar -->
+      <div class="flex justify-between items-center w-full px-4 py-3">
         <!-- Logo -->
         <div>
           <img
@@ -40,36 +38,30 @@
           />
         </div>
 
-        <!-- Hamburger Menu -->
-        <div class="md:hidden">
-          <button id="menu-btn" class="block text-gray-800 focus:outline-none">
-            <img class="h-6 w-6" src="./public/Menu.png" />
-          </button>
-        </div>
-
         <!-- Navigation -->
-        <nav id="menu" class="hidden md:flex gap-10 items-center">
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+        <nav class="flex gap-10 items-center justify-between">
+          <a href="#" class="no-underline text-black hover:text-black"
             >About Us</a
           >
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+          <a href="#" class="no-underline text-black hover:text-black"
             >Services</a
           >
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+          <a href="#" class="no-underline text-black hover:text-black"
             >Events</a
           >
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+          <a href="#" class="no-underline text-black hover:text-black"
             >Donations</a
           >
         </nav>
 
         <!-- Janaza and Mosque Location -->
-        <div class="hidden md:flex items-center space-x-4 w-36 relative">
+        <div class="flex items-center space-x-4 w-36 relative">
           <div class="dropdown">
             <button
-              class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
+              class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl"
             >
               Location
+              <!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
             </button>
             <div
               class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2"
@@ -88,52 +80,23 @@
           </div>
         </div>
       </div>
-
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4"
-      >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >About Us</a
-        >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >Services</a
-        >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >Events</a
-        >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >Donations</a
-        >
-        <div class="flex items-center justify-center w-36 relative mt-2">
-          <div class="">
-            <button
-              class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
-            >
-              Location
-            </button>
-          </div>
-        </div>
-      </div>
+      <!-- Navbar Ends     -->
 
       <!-- Hero Section -->
 
-      <div class="flex flex-col items-center my-7 md:flex-row max-w-full justify-center md:justify-between gap-10 !mx-10">
-        <div
-          class="flex flex-col md:w-[33%] gap-4 justify-center items-center max-w-full p-2"
-        >
+      <div class="flex flex-row max-w-full justify-between gap-10 !mx-10">
+        <div class="flex flex-col items-start gap-4 justify-center max-w-full">
           <div class="my-4">
-            <h2 class="font-black text-3xl md:text-4xl md:text-left text-center">Welcome to Bilal Masjid</h2>
+            <h2 class="font-black text-7xl">Welcome to Bilal Masjid</h2>
           </div>
-          <div class="w-full py-0 max-w-full md:text-justify text-center">
+          <div class="w-[419px] border-red-600 py-0 max-w-full text-justify">
             It is our honor and high privilege to welcome you to the Bilal
             Masjid Web site. It through the Gracious Mercy of Allah (SWT) that
             we are able to provide these services.
           </div>
 
           <button
-            class="flex min-w-28 my-6 border-none custom-button text-white py-3 items-center justify-center font-medium px-6 font-noto-sans rounded-18xl"
+            class="flex min-w-28 my-6 border-none custom-button text-white py-3 font-medium px-6 font-noto-sans rounded-18xl"
           >
             Join Us
             <!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
@@ -147,7 +110,7 @@
 
         <!-- Right Section -->
 
-        <div class="hidden lg:flex flex-col mt-14">
+        <div class="mt-14">
           <div
             class="flex items-center gap-3 max-w-[390px] max-h-44 text-[12px] shadow-md rounded-8xl bg-slate-100 m-8"
           >
@@ -279,16 +242,16 @@
         class="flex flex-col min-h-80 min-w-full p-10 gap-16 bg-mediumseagreen-300 my-16"
       >
         <div class="">
-          <div class="flex flex-col md:flex-row items-center justify-center gap-2 my-3">
-            <p class="text-white text-2xl font-bold m-1">
+          <div class="flex flex-row items-center justify-center gap-2 my-3">
+            <p class="text-white text-2xl font-bold m-2">
               Monday 15th July, 2024
             </p>
-            <p class="text-white text-2xl font-bold m-1">
+            <p class="text-white text-2xl font-bold m-2">
               (7th Muharram 1446 AH)
             </p>
           </div>
           <!-- Prayer Times -->
-          <div class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16">
+          <div class="flex flex-row items-center justify-around my-16">
             <div
               class="flex flex-col items-center gap-4 justify-between border-white border-2 p-4 rounded-3xl"
             >
@@ -401,13 +364,11 @@
       </div>
 
       <!-- Upcoming Events -->
-      <div
-        class="flex flex-col justify-center items-center max-w-full gap-10 my-10"
-      >
+      <div class="flex flex-col justify-center items-center gap-10 my-10">
         <div>
           <h2 class="font-bold text-3xl">Upcoming Events</h2>
         </div>
-        <div class="flex flex-row flex-wrap gap-12 justify-around items-center">
+        <div class="flex flex-row gap-12 justify-around items-center">
           <div class="relative w-60 h-60">
             <img
               class="rounded-3xl h-full w-full"
@@ -478,7 +439,7 @@
         </div>
 
         <!-- Service 1 -->
-        <div class="flex flex-row flex-wrap justify-around items center">
+        <div class="flex flex-row justify-around items center">
           <div class="flex flex-col gap-12 justify-center items-center p-10">
             <div
               class="min-h-40 flex flex-col min-w-40 bg-mediumseagreen-300 justify-center items-center rounded-full"
@@ -541,17 +502,20 @@
       <!-- Service ends -->
 
       <!-- Newsletter starts -->
-      <div class="flex flex-col md:flex-row mx-auto max-w-4xl py-10 px-6 md:p-16 bg-slate-100 rounded-3xl my-10 items-center justify-center md:items-start">
-        <div class="w-full">
-          <div class="flex flex-col items-center justify-center md:items-start gap-2">
-            <h2 class="font-bold text-center md:text-left text-2xl">Subscribe to our Newsletter</h2>
-            <p class="text-gray-700 text-center">
+
+      <div
+        class="flex flex-col m-14 gap-4 py-10 px-16 bg-slate-100 rounded-3xl items-start"
+      >
+        <div>
+          <div class="flex flex-col items-start gap-2">
+            <h2 class="font-bold text-3xl">Subscribe to our Newsletter</h2>
+            <p class="text-gray-700">
               Be the first one to hear about our events and announcements
             </p>
           </div>
           <div class="flex items-center gap-2 mt-10">
             <input
-              class="rounded-3xl bg-slate-300 w-full md:w-60 py-2 px-4 text-black placeholder-gray-500"
+              class="rounded-3xl bg-slate-300 w-60 py-2 px-4 text-black placeholder-gray-500"
               type="email"
               placeholder="Enter your email"
             />
@@ -563,12 +527,11 @@
           </div>
         </div>
       </div>
-      
 
       <!-- Footer -->
-      <div class="flex flex-col w-full bg-slate-200 mt-10 p-10">
+      <div class="flex flex-col w-full bg-slate-200">
         <div
-          class="flex flex-row flex-wrap sm:flex-nowrap justify-around items-center gap-10 w-full bg-slate-200"
+          class="flex flex-row justify-around items-center gap-10 w-full mt-10 bg-slate-200"
         >
           <div class="flex flex-col items-start">
             <img
@@ -605,18 +568,5 @@
         </div>
       </div>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      // Hide the mobile menu by default on page load
-      mobileMenu.classList.add("hidden");
-
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    });
-    </script>
   </body>
 </html>
