@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@400;600;700&display=swap"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <style>
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+      .custom-button {
+        background: #009a53;
+        /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); */
+      }
+    </style>
+  </head>
+  <body class="font-noto-sans">
+    <div
+      class="flex flex-col justify-center items-center font-noto-sans text-black"
+    >
+      <!-- Navbar -->
+      <div class="flex justify-between items-center w-full px-4 py-3 bg-white">
+        <!-- Logo -->
+        <div>
+          <img
+            class="ml-4 h-16"
+            loading="lazy"
+            alt="Logo"
+            src="./public/bilallogohighresolution-1@2x.png"
+          />
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div class="md:hidden">
+          <button id="menu-btn" class="block text-gray-800 focus:outline-none">
+            <img class="h-6 w-6" src="./public/Menu.png" />
+          </button>
+        </div>
+
+        <!-- Navigation -->
+        <nav id="menu" class="hidden md:flex gap-10 items-center">
+          <a href="#" class="no-underline text-black hover:text-gray-700"
+            >About Us</a
+          >
+          <a href="#" class="no-underline text-black hover:text-gray-700"
+            >Services</a
+          >
+          <a href="#" class="no-underline text-black hover:text-gray-700"
+            >Events</a
+          >
+          <a href="#" class="no-underline text-black hover:text-gray-700"
+            >Donations</a
+          >
+        </nav>
+
+        <!-- Janaza and Mosque Location -->
+        <div class="hidden md:flex items-center space-x-4 w-36 relative">
+          <div class="dropdown">
+            <button
+              class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
+            >
+              Location
+            </button>
+            <div
+              class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2"
+            >
+              <a
+                href="#"
+                class="no-underline block px-4 py-2 text-black hover:bg-gray-100"
+                >Janaza</a
+              >
+              <a
+                href="#"
+                class="no-underline block px-4 py-2 text-black hover:bg-gray-100"
+                >Mosque</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4"
+      >
+        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
+          >About Us</a
+        >
+        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
+          >Services</a
+        >
+        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
+          >Events</a
+        >
+        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
+          >Donations</a
+        >
+        <div class="flex items-center justify-center w-36 relative mt-2">
+          <div class="">
+            <button
+              class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
+            >
+              Location
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col mx-auto text-center py-5 m-5 px-2">
+          <h1 class="text-4xl font-bold mb-6">About Us</h1>
+          <div class="flex justify-between items-center space-x-2">
+            <div class="w-6 h-6 bg-mediumseagreen-300 rounded-full"></div>
+            <div class="w-6 h-6 bg-mediumseagreen-300 rounded-full"></div>
+            <div class="w-6 h-6 bg-mediumseagreen-300 rounded-full"></div>
+            <div class="w-6 h-6 bg-mediumseagreen-300 rounded-full"></div>
+          </div>
+        </div>
+
+        <div class="bg-white py-6 px-10 w-full">
+          <div
+            class="flex flex-wrap md:flex-nowrap gap-5 md:gap-3 md:justify-between items-center"
+          >
+            <div class="max-w-[650px]">
+              <p class="text-mediumseagreen-300 font-semibold">About Us</p>
+              <h2 class="text-2xl font-bold my-3">About Bilal Masjid</h2>
+              <p class="text-gray-600">
+                It is our honor and high privilege to welcome you to the Bilal
+                Masjid Web site. It is through the Gracious Mercy of Allah (SWT)
+                that we are able to provide these services. It is our honor and
+                high privilege to welcome you to the Bilal Masjid Web site. It
+                is through the Gracious Mercy of Allah (SWT) that we are able to
+                provide these services.
+              </p>
+              <a
+                href="#"
+                class="inline-block my-6 bg-mediumseagreen-300 text-white font-medium py-3 px-6 rounded-full"
+                >Contact Us</a
+              >
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center">
+              <div
+                class="bg-mediumseagreen-300 rounded-3xl m-7 h-64 w-full md:w-96 flex items-center justify-center"
+              >
+                <button class="text-white text-4xl">&#9654;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Section end -->
+
+      <!-- Prayer Section -->
+
+      <div>
+        <div
+          class="flex flex-col min-h-80 min-w-full py-5 px-10 gap-14 bg-white"
+        >
+          <div class="">
+            <div class="flex flex-col items-center justify-center gap-2 my-3">
+              <p class="text-center text-lg text-mediumseagreen-300 font-bold">
+                Pillars of Islam
+              </p>
+              <p class="text-black text-center text-3xl font-semibold m-1">
+                Pillars of Islam
+              </p>
+            </div>
+            <!-- Prayer Times -->
+            <div
+              class="flex flex-wrap sm:flex-nowrap flex-row gap-12 items-center justify-around my-14"
+            >
+              <div
+                class="flex min-w-32 p-5 min-h-36 flex-col items-center gap-4 justify-center bg-gray-200 rounded-3xl"
+              >
+                <img
+                  class="object-contain"
+                  src="./public/Ramadan.png"
+                  alt="Sun Icon"
+                  style="width: 40px; height: 40px"
+                />
+
+                <p class="text-black m-0 text-smi font-semibold">Faith</p>
+              </div>
+              <div
+                class="flex min-w-32 p-5 min-h-36 flex-col items-center gap-4 justify-center bg-gray-200 rounded-3xl"
+              >
+                <img
+                  class="object-contain"
+                  src="./public/Praying Man.png"
+                  alt="Sun Icon"
+                  style="width: 40px; height: 40px"
+                />
+
+                <p class="text-black m-0 text-smi font-semibold">Prayer</p>
+              </div>
+              <div
+                class="flex min-w-32 p-5 min-h-36 flex-col items-center gap-4 justify-center bg-gray-200 rounded-3xl"
+              >
+                <img
+                  class="object-contain"
+                  src="./public/Donate.png"
+                  alt="Sun Icon"
+                  style="width: 40px; height: 40px"
+                />
+
+                <p class="text-black m-0 text-smi font-semibold">Zakat</p>
+              </div>
+              <div
+                class="flex min-w-32 p-5 min-h-36 flex-col items-center gap-4 justify-center bg-gray-200 rounded-3xl"
+              >
+                <img
+                  class="object-contain"
+                  src="./public/Crescent City.png"
+                  alt="Sun Icon"
+                  style="width: 40px; height: 40px"
+                />
+
+                <p class="text-black m-0 text-smi font-semibold">Fasting</p>
+              </div>
+              <div
+                class="flex min-w-32 p-5 min-h-36 flex-col items-center gap-4 justify-center bg-gray-200 rounded-3xl"
+              >
+                <img
+                  class="object-contain"
+                  src="./public/Mosque.png"
+                  alt="Sun Icon"
+                  style="width: 40px; height: 40px"
+                />
+
+                <p class="text-black m-0 text-smi font-semibold">Pilgrimage</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Goals Section -->
+
+      <div class="bg-white px-4 md:px-0">
+        <div class="container mx-auto text-center">
+          <div class="flex flex-col items-center justify-center gap-1 my-3">
+            <p class="text-center text-lg text-mediumseagreen-300 font-bold">
+              Our Goals
+            </p>
+            <p class="text-black text-center text-3xl font-semibold">
+              Our Goals
+            </p>
+          </div>
+
+          <!-- Goals Section -->
+          <div class="my-10 flex flex-col flex-wrap gap-14 md:flex-nowrap">
+            <!-- Fundraising for Bilal Masjid -->
+            <div
+              class="bg-gray-100 min-h-64 md:min-w-[700px] rounded-3xl p-10 shadow-md flex flex-col gap-2 flex-wrap items-center justify-between"
+            >
+              <div class="w-full">
+                <div class="flex flex-col md:items-start">
+                  <h2 class="text-xl md:text-left font-bold mb-2">
+                    Fundraising for Bilal Masjid
+                  </h2>
+                  <p
+                    class="text-gray-600 md:text-left font-normal text-smi mb-4"
+                  >
+                    It is our honor and high privilege to welcome you to the
+                    Bilal Masjid Web site.
+                  </p>
+                </div>
+
+                <!-- Progress Bar  -->
+                <div class="w-full bg-gray-400 rounded-full h-2.5 mb-6">
+                  <div
+                    class="bg-mediumseagreen-300 h-2.5 rounded-full"
+                    style="width: 79%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mt">
+                <a
+                  href="#"
+                  class="bg-mediumseagreen-300 text-white font-medium py-3 px-6 rounded-full"
+                  >Donate</a
+                >
+              </div>
+            </div>
+
+            <!-- Fundraising for Palestine -->
+            <div
+              class="bg-gray-100 min-h-64 md:min-w-[700px] rounded-3xl p-10 shadow-md flex flex-col gap-2 flex-wrap items-center justify-between"
+            >
+              <div class="w-full">
+                <div class="flex flex-col md:items-start">
+                  <h2 class="text-xl md:text-left font-bold mb-2">
+                    Fundraising for Bilal Masjid
+                  </h2>
+                  <p
+                    class="text-gray-600 md:text-left font-normal text-smi mb-4"
+                  >
+                    It is our honor and high privilege to welcome you to the
+                    Bilal Masjid Web site.
+                  </p>
+                </div>
+
+                <!-- Progress Bar  -->
+                <div class="w-full bg-gray-400 rounded-full h-2.5 mb-6">
+                  <div
+                    class="bg-mediumseagreen-300 h-2.5 rounded-full"
+                    style="width: 79%"
+                  ></div>
+                </div>
+              </div>
+              <div class="mt">
+                <a
+                  href="#"
+                  class="bg-mediumseagreen-300 text-white font-medium py-3 px-6 rounded-full"
+                  >Donate</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Indicator -->
+          <div class="flex justify-center gap-2 my-8 space-x-2">
+            <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+            <div class="w-3 h-3 bg-mediumseagreen-300 rounded-full"></div>
+            <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funding Section -->
+
+      <section class="bg-gray-100 py-12 px-4 w-full my-5">
+        <div class="container mx-auto text-center">
+          <h2 class="text-xl font-bold mb-6">Need Financial Aid?</h2>
+          <p class="text-gray-600 mb-4">
+            It is our honor and high privilege to welcome you to the Bilal
+            Masjid Web site.
+          </p>
+          <p class="text-gray-600 mb-4">Contact: +1 123 456 789</p>
+          <p class="text-gray-600 mb-8">Email: bilalmasjid@example.com</p>
+          <div class="flex justify-center space-x-4">
+            <a
+              href="#"
+              class="bg-gray-600 text-white font-medium py-3 px-6 rounded-full"
+              >Process</a
+            >
+            <a
+              href="#"
+              class="bg-mediumseagreen-300 text-white font-medium py-3 px-6 rounded-full"
+              >Apply</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy Policy -->
+
+      <section class="bg-gray-100 shadow-sm py-12 m-10 border-gray-200 border-2 rounded-3xl px-7">
+        <div class="container mx-auto text-center">
+          <h2 class="text-xl font-bold mb-4">
+            See our Privacy Policy and Code of Conduct
+          </h2>
+          <p class="text-gray-600 mb-6">
+            It is our honor and high privilege to welcome you to the Bilal
+            Masjid Web site.
+          </p>
+          <a
+            href="#"
+            class="bg-mediumseagreen-300 text-white font-medium py-3 m-3 px-6 rounded-full"
+            >Policy</a
+          >
+        </div>
+      </section>
+
+      <!-- Footer -->
+    <div class="flex flex-col w-full bg-slate-200 mt-10 p-10">
+      <div class="flex flex-row flex-wrap sm:flex-nowrap justify-around items-center gap-10 w-full bg-slate-200">
+        <div class="flex flex-col items-start">
+          <img class="h-24 my-4" loading="lazy" alt="Logo" src="./public/bilallogohighresolution-1@2x.png" />
+
+          <div class="my-4 flex flex-col gap-2">
+            <!-- <p class="font-semibold">Contact Us</p> -->
+            <p>Bilal Masjid 4115 SW 160th Beaverton OR 97007</p>
+            <p>Email: bilalmasjid@bilalmasjid.com</p>
+          </div>
+        </div>
+        <div class="flex flex-row gap-12 items-start">
+          <div class="flex flex-col gap-4 font-medium">
+            <p class="font-semibold">Quick Links</p>
+            <p>About Us</p>
+            <p>Services</p>
+            <p>Community</p>
+          </div>
+          <div class="flex flex-col justify-center mx-4 items-center">
+            <button
+              class="flex justify-center items-center min-w-28 my-4 border-none custom-button text-white py-3 font-medium px-6 font-noto-sans rounded-18xl">
+              Follow Us
+            </button>
+            <div class="flex gap-3">
+              <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                <img src="./public/Facebook-icon.png"
+                  alt="facebook icon">
+              </div>
+              <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                <img src="./public/whatsapp-icon.svg">
+              </div>
+              <!-- <div class="bg-mediumseagreen-300 rounded-full w-8 h-8 flex justify-center items-center">
+                <img src="./public/email-icon.webp" > -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        // Hide the mobile menu by default on page load
+        mobileMenu.classList.add("hidden");
+
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>
