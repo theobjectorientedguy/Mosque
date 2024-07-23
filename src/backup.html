@@ -12,6 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="script.js"></script>
 
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -156,7 +157,7 @@
     </style>
   </head>
 
-  <body class="overflow-x-hidden">
+  <body>
     <div
       class="flex flex-col justify-center items-center font-noto-sans text-black"
     >
@@ -188,9 +189,7 @@
 
           <!-- Navigation -->
           <nav id="menu" class="hidden md:flex gap-10 items-center">
-            <a
-              href="about.html"
-              class="no-underline text-black hover:text-gray-700"
+            <a href="about.html" class="no-underline text-black hover:text-gray-700"
               >About Us</a
             >
             <a href="#" class="no-underline text-black hover:text-gray-700"
@@ -235,9 +234,7 @@
           id="mobile-menu"
           class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4"
         >
-          <a
-            href="about.html"
-            class="no-underline text-black hover:text-gray-700 py-2"
+          <a href="about.html" class="no-underline text-black hover:text-gray-700 py-2"
             >About Us</a
           >
           <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
@@ -287,8 +284,7 @@
 
             <button
               class="flex min-w-28 my-6 border-none custom-button text-white py-3 items-center justify-center font-medium px-6 font-noto-sans rounded-18xl"
-              data-aos="fade-in"
-            >
+            data-aos="fade-in">
               Join Us
               <!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
             </button>
@@ -437,50 +433,7 @@
       </div>
       <!-- hero section ends -->
 
-      <div
-        class="flex flex-col min-h-80 min-w-full p-10 gap-16 bg-mediumseagreen-300 my-16"
-        data-aos="slide-left"
-      >
-        <div class="">
-          <div
-            class="flex flex-col md:flex-row items-center justify-center gap-2 my-3"
-          >
-            <p
-              id="gregorian-date"
-              class="text-white text-center text-2xl font-bold m-1"
-            ></p>
-            <p
-              id="islamic-date"
-              class="text-white text-center text-2xl font-bold m-1"
-            ></p>
-          </div>
-          <div
-            id="prayer-times"
-            class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16"
-          ></div>
-          <div class="flex flex-row items-center gap-6 justify-center">
-            <button
-              class="flex items-center justify-around rounded-3xl gap-2 border-none font-bold max-w-32 bg-white text-mediumseagreen-300 py-2 px-4 shadow-md"
-            >
-              <p>Schedule</p>
-              <img
-                src="./public/back-arrow-5@2x.png"
-                class="h-[23px] w-[23px]"
-              />
-            </button>
-            <div class="flex justify-around items-center gap-4">
-              <div
-                class="rounded-[50%] bg-gainsboro-100 w-[17px] h-[17px] z-[1]"
-              ></div>
-              <div
-                class="rounded-[50%] bg-gray-400 w-[17px] h-[17px] z-[1]"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Prayer Times 
+      <!-- Prayer Times  -->
 
       <div
         class="flex flex-col min-h-80 min-w-full p-10 gap-16 bg-mediumseagreen-300 my-16"
@@ -497,7 +450,7 @@
               (7th Muharram 1446 AH)
             </p>
           </div>
-           Prayer Times
+          <!-- Prayer Times -->
           <div
             class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16"
           >
@@ -587,10 +540,10 @@
               </button>
               <p class="text-white m-0 text-xl">Isha</p>
             </div>
-          </div> -->
+          </div>
 
-      <!-- Button -->
-      <!-- <div class="flex flex-row items-center gap-6 justify-center">
+          <!-- Button -->
+          <div class="flex flex-row items-center gap-6 justify-center">
             <button
               class="flex items-center justify-around rounded-3xl gap-2 border-none font-bold max-w-32 bg-white text-mediumseagreen-300 py-2 px-4 shadow-md"
             >
@@ -610,7 +563,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
 
       <!-- Upcoming Events -->
       <div
