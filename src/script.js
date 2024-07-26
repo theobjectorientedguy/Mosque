@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Find the next prayer time
                 const now = new Date();
-                const currentTime = `${now.getHours()}:${now.getMinutes() < 10 ? '0' : ''}${now.getMinutes()} ${now.getHours() >= 12 ? 'PM' : 'AM'}`;
                 let nextPrayer = null;
 
                 for (const prayer of prayers) {
-                    if (todayPrayerTimes[prayer] > currentTime) {
+                    const prayerTime = new Date(`2024-07-${today} ${todayPrayerTimes[prayer]}`);
+                    if (now < prayerTime) {
                         nextPrayer = prayer;
                         break;
                     }
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const prayerDiv = document.createElement('div');
                     prayerDiv.classList.add('flex', 'flex-col', 'items-center', 'gap-4', 'justify-between', 'p-4', 'rounded-3xl');
                     if (prayer === nextPrayer) {
+                        console.log('Next Prayer:', prayer);
                         prayerDiv.classList.add('border-white', 'border-2'); // Highlight border for the next prayer time
                     }
 

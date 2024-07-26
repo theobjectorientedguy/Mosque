@@ -26,7 +26,14 @@
         background: #009a53;
         /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); */
       }
-
+      .loader {
+        border: 8px solid #e0e0e0; /* Light gray border for the loader */
+        border-top-color: #009a53; /* Blue color for the top border */
+        border-radius: 50%; /* Circular shape */
+        width: 64px; /* Size of the loader */
+        height: 64px; /* Size of the loader */
+        animation: spin 1s linear infinite; /* Spinning animation */
+      }
       .container {
         max-width: 950px;
         width: 100%;
@@ -59,14 +66,12 @@
 
       .card {
         width: calc(100% / 3 - 10px);
-        border-radius: 1.5rem;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 1.5rem;
         display: flex;
         transition: all 0.4s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-15px);
+        aspect-ratio: 1/1;
+        overflow: hidden;
       }
 
       .button {
@@ -153,10 +158,17 @@
           width: 100%;
         }
       }
+
     </style>
   </head>
 
   <body class="overflow-x-hidden">
+    <!-- Loader -->
+    <div id="loader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
+      <div class="loader"></div>
+    </div>
+  <!-- Main Content -->
+  <div id="main-content" class="hidden"> 
     <div
       class="flex flex-col justify-center items-center font-noto-sans text-black"
     >
@@ -199,9 +211,13 @@
             <a href="#" class="no-underline text-black hover:text-gray-700"
               >Events</a
             >
-            <a href="#" class="no-underline text-black hover:text-gray-700"
-              >Donations</a
-            >
+            <div class="relative group">
+              <a href="#" class="no-underline text-black hover:text-gray-700">Donations</a>
+              <div class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Online</a>
+                <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200">Donate Stock</a>
+              </div>
+            </div>
           </nav>
 
           <!-- Janaza and Mosque Location -->
@@ -246,9 +262,13 @@
           <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
             >Events</a
           >
-          <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-            >Donations</a
-          >
+          <div class="relative">
+            <button id="donations-button" class="no-underline text-black hover:text-gray-700 py-2 block w-full text-left">Donations</button>
+            <div id="donations-dropdown" class="hidden flex-col items-start bg-white border border-gray-200 rounded-md shadow-lg w-full mt-1">
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Online</a>
+              <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-green-200 w-full">Donate Stock</a>
+            </div>
+          </div>
           <div class="flex items-center justify-center w-36 relative mt-2">
             <div class="">
               <button
@@ -288,10 +308,10 @@
             <button
               class="flex min-w-28 my-6 border-none custom-button text-white py-3 items-center justify-center font-medium px-6 font-noto-sans rounded-18xl"
               data-aos="fade-in"
-            >
+            ><a href="https://www.bilalmasjid.com/Join/EmailListSubscription/Default.aspx">
               Join Us
               <!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
-            </button>
+            </a></button>
           </div>
 
           <!-- Middle Image -->
@@ -627,14 +647,14 @@
           <div class="main-card mb-5">
             <div class="cards" data-aos="fade-up">
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100">
                   <img
-                    class="rounded-3xl h-full w-full"
+                    class=" h-full w-full"
                     src="./public/Why-Islam-is-true-1536x1536.jpg"
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
                     >
                       Register
                     </p>
@@ -642,14 +662,14 @@
                 </div>
               </div>
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100">
                   <img
-                    class="rounded-3xl h-full w-full"
+                    class="h-full w-full"
                     src="./public/Discussion-Navigating-Relationships.jpg"
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
                     >
                       Register
                     </p>
@@ -657,14 +677,14 @@
                 </div>
               </div>
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100">
                   <img
-                    class="rounded-3xl h-full w-full"
+                    class="h-full w-full"
                     src="./public/traditional-iftar-fast-breaking.jpg"
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
                     >
                       Iftar
                     </p>
@@ -675,14 +695,14 @@
 
             <div class="cards" data-aos="slide-right">
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100">
                   <img
-                    class="rounded-3xl h-full w-full"
+                    class="h-full w-full"
                     src="./public/khutba.jpg"
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
                     >
                       Jumma Khutba
                     </p>
@@ -690,14 +710,14 @@
                 </div>
               </div>
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100">
                   <img
-                    class="rounded-3xl h-full w-full"
-                    src="./public/larm-rmah-AEaTUnvneik-unsplash-scaled.jpg "
+                    class="h-full w-full"
+                    src="./public/donations.jpg "
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
                     >
                       Donate
                     </p>
@@ -705,14 +725,14 @@
                 </div>
               </div>
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100">
                   <img
-                    class="rounded-2xl h-full w-full"
-                    src="./public/mask-group-4@2x.png"
+                    class="h-full w-full"
+                    src="./public/community.jpg"
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[70%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"qwo[]
                     >
                       Join the Community
                     </p>
@@ -723,29 +743,14 @@
 
             <div class="cards" data-aos="slide-right">
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100 object-cover">
                   <img
-                    class="rounded-2xl h-full w-full"
-                    src="./public/mask-group-3@2x.png"
+                    class="h-full w-full object-cover"
+                    src="./public/Islamic-Studies-Course-Quran-Oasis.jpg"
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
-                    >
-                      Become A Volunteer
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="card w-80">
-                <div class="relative w-80 h-60">
-                  <img
-                    class="rounded-3xl h-full w-full object-cover"
-                    src="./public/Learn-Quran-Reading-Basics-NEW-Top-Quran-Classes.jpg"
-                  />
-                  <div class="absolute bottom-5 w-full flex justify-center">
-                    <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-1 rounded-2xl"
                     >
                       Register
                     </p>
@@ -753,15 +758,30 @@
                 </div>
               </div>
               <div class="card w-80">
-                <div class="relative w-80 h-60">
+                <div class="relative w-100 h-100">
                   <img
-                    class="rounded-3xl h-full w-full object-cover"
+                    class="h-full w-full object-cover"
+                    src="./public/quran.jpg"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Register
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-80">
+                <div class="relative w-100 h-100">
+                  <img
+                    class="h-full w-full object-cover"
                     src="./public/khutba.jpg"
                     alt="Jumma Khutba"
                   />
                   <div class="absolute bottom-5 w-full flex justify-center">
                     <p
-                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                      class="w-[50%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
                     >
                       Jumma Khutba
                     </p>
@@ -929,6 +949,7 @@
         </div>
       </div>
     </div>
+    </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const menuBtn = document.getElementById("menu-btn");
@@ -943,6 +964,32 @@
       });
     </script>
     <script>
+      document.getElementById('donations-button').addEventListener('click', function() {
+        var dropdown = document.getElementById('donations-dropdown');
+        dropdown.classList.toggle('hidden');
+      });
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+        var loader = document.getElementById('loader');
+        var mainContent = document.getElementById('main-content');
+  
+        setTimeout(function() {
+          loader.style.display = 'none';
+          mainContent.classList.remove('hidden');
+  
+          // Reinitialize AOS
+          AOS.init({
+            duration: 3000, 
+            once: true,     
+            offset: 90,     
+          });
+        }, 3000); // 3 seconds delay
+      });
+    </script>
+   
+    <script>
       let counter = 1; // Start with the first slide
       const totalSlides = 3; // Total number of slides
       function updateSlides() {
@@ -955,14 +1002,9 @@
       setInterval(updateSlides, 5000);
       updateSlides();
     </script>
+   
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        offset: 90,
-        duration: 3000,
-        once: true,
-      });
-    </script>
+ 
+ 
   </body>
 </html>

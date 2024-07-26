@@ -10,268 +10,426 @@
       href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@400;600;700&display=swap"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="script.js"></script>
 
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
       .dropdown:hover .dropdown-menu {
         display: block;
       }
+
       .custom-button {
         background: #009a53;
         /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); */
       }
+
+      .container {
+        max-width: 950px;
+        width: 100%;
+        overflow: hidden;
+        padding: 80px 0;
+      }
+
+      .main-card {
+        display: flex;
+        justify-content: space-evenly;
+        width: 300%;
+        transition: 1s;
+      }
+
+      #two:checked ~ .main-card {
+        margin-left: -100%;
+      }
+
+      #three:checked ~ .main-card {
+        margin-left: -200%;
+      }
+
+      .cards {
+        width: calc(100% / 3);
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 20px 30px;
+        justify-content: space-between;
+      }
+
+      .card {
+        width: calc(100% / 3 - 10px);
+        border-radius: 1.5rem;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        display: flex;
+        transition: all 0.4s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-15px);
+      }
+
+      .button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 20px;
+      }
+
+      .button label {
+        height: 15px;
+        width: 15px;
+        border-radius: 20px;
+        background: #beb8b8;
+        margin: 0 4px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+      }
+
+      .button label.active {
+        width: 15px;
+      }
+
+      #one:checked ~ .button .one {
+        width: 35px;
+        background-color: #009a53;
+      }
+
+      #one:checked ~ .button .two {
+        width: 15px;
+      }
+
+      #one:checked ~ .button .three {
+        width: 15px;
+      }
+
+      #two:checked ~ .button .one {
+        width: 15px;
+      }
+
+      #two:checked ~ .button .two {
+        width: 35px;
+        background-color: #009a53;
+      }
+
+      #two:checked ~ .button .three {
+        width: 15px;
+      }
+
+      #three:checked ~ .button .one {
+        width: 15px;
+      }
+
+      #three:checked ~ .button .two {
+        width: 15px;
+      }
+
+      #three:checked ~ .button .three {
+        width: 35px;
+        background-color: #009a53;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .cards {
+          width: calc(100% / 2);
+        }
+
+        .card {
+          margin: 20px 0 10px 0;
+          width: calc(100% / 2 - 10px);
+        }
+      }
+
+      @media (max-width: 500px) {
+        .cards {
+          width: 100%;
+        }
+
+        .card {
+          width: 100%;
+        }
+      }
     </style>
   </head>
-  <body>
+
+  <body class="overflow-x-hidden">
+    
     <div
       class="flex flex-col justify-center items-center font-noto-sans text-black"
     >
-      <!-- Navbar -->
-      <div class="flex justify-between items-center w-full px-4 py-3 bg-white">
-        <!-- Logo -->
-        <div>
-          <img
-            class="ml-4 h-16"
-            loading="lazy"
-            alt="Logo"
-            src="./public/bilallogohighresolution-1@2x.png"
-          />
+      <div>
+        <!-- Navbar -->
+        <div
+          class="flex justify-between items-center w-full px-4 py-3 bg-white"
+          data-aos="fade-down"
+        >
+          <!-- Logo -->
+          <div>
+            <img
+              class="ml-4 h-16"
+              loading="lazy"
+              alt="Logo"
+              src="./public/bilallogohighresolution-1@2x.png"
+            />
+          </div>
+
+          <!-- Hamburger Menu -->
+          <div class="md:hidden">
+            <button
+              id="menu-btn"
+              class="block text-gray-800 focus:outline-none"
+            >
+              <img class="h-6 w-6" src="./public/Menu.png" />
+            </button>
+          </div>
+
+          <!-- Navigation -->
+          <nav id="menu" class="hidden md:flex gap-10 items-center">
+            <a
+              href="about.html"
+              class="no-underline text-black hover:text-gray-700"
+              >About Us</a
+            >
+            <a href="#" class="no-underline text-black hover:text-gray-700"
+              >Services</a
+            >
+            <a href="#" class="no-underline text-black hover:text-gray-700"
+              >Events</a
+            >
+            <a href="#" class="no-underline text-black hover:text-gray-700"
+              >Donations</a
+            >
+          </nav>
+
+          <!-- Janaza and Mosque Location -->
+          <div class="hidden md:flex items-center space-x-4 w-36 relative">
+            <div class="dropdown">
+              <button
+                class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
+              >
+                Location
+              </button>
+              <div
+                class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2"
+              >
+                <a
+                  href="#"
+                  class="no-underline block px-4 py-2 text-black hover:bg-gray-100"
+                  >Janaza</a
+                >
+                <a
+                  href="#"
+                  class="no-underline block px-4 py-2 text-black hover:bg-gray-100"
+                  >Mosque</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Hamburger Menu -->
-        <div class="md:hidden">
-          <button id="menu-btn" class="block text-gray-800 focus:outline-none">
-            <img class="h-6 w-6" src="./public/Menu.png" />
-          </button>
-        </div>
-
-        <!-- Navigation -->
-        <nav id="menu" class="hidden md:flex gap-10 items-center">
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+        <!-- Mobile Menu -->
+        <div
+          id="mobile-menu"
+          class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4"
+        >
+          <a
+            href="about.html"
+            class="no-underline text-black hover:text-gray-700 py-2"
             >About Us</a
           >
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+          <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
             >Services</a
           >
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+          <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
             >Events</a
           >
-          <a href="#" class="no-underline text-black hover:text-gray-700"
+          <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
             >Donations</a
           >
-        </nav>
-
-        <!-- Janaza and Mosque Location -->
-        <div class="hidden md:flex items-center space-x-4 w-36 relative">
-          <div class="dropdown">
-            <button
-              class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
-            >
-              Location
-            </button>
-            <div
-              class="dropdown-menu min-w-28 absolute hidden bg-slate-100 shadow-lg rounded-lg mt-2 py-2"
-            >
-              <a
-                href="#"
-                class="no-underline block px-4 py-2 text-black hover:bg-gray-100"
-                >Janaza</a
+          <div class="flex items-center justify-center w-36 relative mt-2">
+            <div class="">
+              <button
+                class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
               >
-              <a
-                href="#"
-                class="no-underline block px-4 py-2 text-black hover:bg-gray-100"
-                >Mosque</a
-              >
+                Location
+              </button>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="sm:hidden flex flex-col justify-center items-center mt-4 bg-white shadow-md w-full py-4"
-      >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >About Us</a
-        >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >Services</a
-        >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >Events</a
-        >
-        <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
-          >Donations</a
-        >
-        <div class="flex items-center justify-center w-36 relative mt-2">
-          <div class="">
-            <button
-              class="flex min-w-28 custom-button shadow-none border-none text-white py-3 font-medium px-6 font-noto-sans rounded-18xl bg-mediumseagreen-300"
-            >
-              Location
-            </button>
-          </div>
-        </div>
-      </div>
+        <!-- Hero Section -->
 
-      <!-- Hero Section -->
-
-      <div
-        class="flex flex-col items-center my-7 md:flex-row max-w-full justify-center md:justify-between gap-10 !mx-10"
-      >
         <div
-          class="flex flex-col md:w-[33%] gap-4 md:items-start justify-center items-center max-w-full p-2"
+          class="flex flex-col items-center my-7 md:flex-row max-w-full justify-center md:justify-between gap-10 !mx-10"
         >
-          <div class="my-4">
-            <h2
-              class="font-black text-3xl md:text-4xl md:text-left text-center"
-            >
-              Welcome to Bilal Masjid
-            </h2>
-          </div>
-          <div class="w-full py-0 max-w-full md:text-justify text-center">
-            It is our honor and high privilege to welcome you to the Bilal
-            Masjid Web site. It through the Gracious Mercy of Allah (SWT) that
-            we are able to provide these services.
-          </div>
-
-          <button
-            class="flex min-w-28 my-6 border-none custom-button text-white py-3 items-center justify-center font-medium px-6 font-noto-sans rounded-18xl"
-          >
-            Join Us
-            <!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
-          </button>
-        </div>
-
-        <!-- Middle Image -->
-        <div class="flex flex-col justify-center">
-          <img class="h-[320px] w-[200px]" src="./public/mask-group@2x.png" />
-        </div>
-
-        <!-- Right Section -->
-
-        <div class="hidden lg:flex flex-col mt-14">
           <div
-            class="flex items-center gap-3 max-w-[390px] max-h-44 text-[12px] shadow-md rounded-8xl bg-slate-100 m-8"
+            class="flex flex-col md:w-[33%] gap-4 justify-center items-center max-w-full p-2"
           >
-            <!-- Image -->
-            <div>
-              <img
-                class="h-44 w-36 z-10"
-                src="./public/mask-group-1@2x.png"
-                alt="Event Image"
-              />
+            <div class="my-4">
+              <h2
+                class="font-black text-3xl md:text-4xl md:text-left text-center"
+                data-aos="fade-down"
+              >
+                Welcome to Bilal Masjid
+              </h2>
             </div>
-            <!-- Content -->
             <div
-              class="flex flex-col justify-between gap-3 py-6 px-2 border-black"
+              class="w-full py-0 max-w-full md:text-justify text-center"
+              data-aos="slide-right"
             >
-              <!-- Event Title -->
-              <b class="text-[14px]">Donation Drive Ramadan ‘24</b>
+              It is our honor and high privilege to welcome you to the Bilal
+              Masjid Web site. It through the Gracious Mercy of Allah (SWT) that
+              we are able to provide these services.
+            </div>
 
-              <!-- Event Date -->
-              <div class="flex items-center gap-2 text-mediumseagreen-200">
+            <button
+              class="flex min-w-28 my-6 border-none custom-button text-white py-3 items-center justify-center font-medium px-6 font-noto-sans rounded-18xl"
+              data-aos="fade-in"
+            ><a href="https://www.bilalmasjid.com/Join/EmailListSubscription/Default.aspx">
+              Join Us
+              <!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
+            </a></button>
+          </div>
+
+          <!-- Middle Image -->
+          <div
+            class="flex flex-col justify-center"
+            data-aos="zoom-in"
+            data-aos-duration="3000ms"
+            data-aos-delay="3000ms"
+          >
+            <img class="h-[320px] w-[200px]" src="./public/mask-group@2x.png" />
+          </div>
+
+          <!-- Right Section -->
+
+          <div class="hidden lg:flex flex-col mt-14">
+            <div
+              class="flex items-center gap-3 max-w-[390px] max-h-44 text-[12px] shadow-md rounded-8xl bg-slate-100 m-8"
+              data-aos="slide-left"
+            >
+              <!-- Image -->
+              <div data-aos="slide-left">
                 <img
-                  class="h-5 w-5"
-                  src="./public/calendar@2x.png"
-                  alt="Calendar Icon"
+                  class="h-44 w-36 z-10"
+                  src="./public/mask-group-1@2x.png"
+                  alt="Event Image"
                 />
-                <span>Wednesday - 3rd April, 2024</span>
               </div>
+              <!-- Content -->
+              <div
+                class="flex flex-col justify-between gap-3 py-6 px-2 border-black"
+                data-aos="slide-left"
+              >
+                <!-- Event Title -->
+                <b class="text-[14px]">Donation Drive Ramadan ‘24</b>
 
-              <!-- Event Location -->
-              <div class="flex items-center gap-2 text-mediumseagreen-200">
-                <img
-                  class="h-5 w-5"
-                  src="./public/location@2x.png"
-                  alt="Location Icon"
-                />
-                <span>160th Ave, Beaverton, OR 97007, US</span>
-              </div>
-
-              <!-- Registration Button -->
-              <div class="flex flex-row gap-3">
-                <button
-                  class="flex items-center gap-2 border-none max-w-28 bg-mediumseagreen-300 text-white py-2 px-4 rounded-2xl shadow-md"
-                >
-                  <span class="font-noto-sans">Register</span>
+                <!-- Event Date -->
+                <div class="flex items-center gap-2 text-mediumseagreen-200">
                   <img
                     class="h-5 w-5"
-                    src="./public/back-arrow-3@2x.png"
-                    alt="Arrow Icon"
+                    src="./public/calendar@2x.png"
+                    alt="Calendar Icon"
                   />
-                </button>
+                  <span>Wednesday - 3rd April, 2024</span>
+                </div>
 
-                <!-- Days Left -->
-                <div
-                  class="font-semibold justify-between self-center text-sm text-mediumseagreen-300"
-                >
-                  (2 Days Left)
+                <!-- Event Location -->
+                <div class="flex items-center gap-2 text-mediumseagreen-200">
+                  <img
+                    class="h-5 w-5"
+                    src="./public/location@2x.png"
+                    alt="Location Icon"
+                  />
+                  <span>160th Ave, Beaverton, OR 97007, US</span>
+                </div>
+
+                <!-- Registration Button -->
+                <div class="flex flex-row gap-3">
+                  <button
+                    class="flex items-center gap-2 border-none max-w-28 bg-mediumseagreen-300 text-white py-2 px-4 rounded-2xl shadow-md"
+                  >
+                    <span class="font-noto-sans">Register</span>
+                    <img
+                      class="h-5 w-5"
+                      src="./public/back-arrow-3@2x.png"
+                      alt="Arrow Icon"
+                    />
+                  </button>
+
+                  <!-- Days Left -->
+                  <div
+                    class="font-semibold justify-between self-center text-sm text-mediumseagreen-300"
+                  >
+                    (2 Days Left)
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div
-            class="flex items-center gap-3 max-w-[390px] max-h-44 text-[12px] shadow-md rounded-8xl bg-slate-100 m-12"
-          >
-            <!-- Image -->
-            <div>
-              <img
-                class="h-44 w-36 z-10"
-                src="./public/mask-group-1@2x.png"
-                alt="Event Image"
-              />
-            </div>
-            <!-- Content -->
             <div
-              class="flex flex-col justify-between gap-3 py-6 px-2 border-black"
+              class="flex items-center gap-3 max-w-[390px] max-h-44 text-[12px] shadow-md rounded-8xl bg-slate-100 m-12"
+              data-aos="slide-left"
             >
-              <!-- Event Title -->
-              <b class="text-[14px]">Donation Drive Ramadan ‘24</b>
-
-              <!-- Event Date -->
-              <div class="flex items-center gap-2 text-mediumseagreen-200">
+              <!-- Image -->
+              <div data-aos="slide-left">
                 <img
-                  class="h-5 w-5"
-                  src="./public/calendar@2x.png"
-                  alt="Calendar Icon"
+                  class="h-44 w-36 z-10"
+                  src="./public/mask-group-1@2x.png"
+                  alt="Event Image"
                 />
-                <span>Wednesday - 3rd April, 2024</span>
               </div>
+              <!-- Content -->
+              <div
+                class="flex flex-col justify-between gap-3 py-6 px-2 border-black"
+                data-aos="slide-left"
+              >
+                <!-- Event Title -->
+                <b class="text-[14px]">Donation Drive Ramadan ‘24</b>
 
-              <!-- Event Location -->
-              <div class="flex items-center gap-2 text-mediumseagreen-200">
-                <img
-                  class="h-5 w-5"
-                  src="./public/location@2x.png"
-                  alt="Location Icon"
-                />
-                <span>160th Ave, Beaverton, OR 97007, US</span>
-              </div>
-
-              <!-- Registration Button -->
-              <div class="flex flex-row gap-3">
-                <button
-                  class="flex items-center gap-2 border-none max-w-28 bg-mediumseagreen-300 text-white py-2 px-4 rounded-2xl shadow-md"
-                >
-                  <span class="font-noto-sans">Register</span>
+                <!-- Event Date -->
+                <div class="flex items-center gap-2 text-mediumseagreen-200">
                   <img
                     class="h-5 w-5"
-                    src="./public/back-arrow-3@2x.png"
-                    alt="Arrow Icon"
+                    src="./public/calendar@2x.png"
+                    alt="Calendar Icon"
                   />
-                </button>
+                  <span>Wednesday - 3rd April, 2024</span>
+                </div>
 
-                <!-- Days Left -->
-                <div
-                  class="font-semibold justify-between self-center text-sm text-mediumseagreen-300"
-                >
-                  (2 Days Left)
+                <!-- Event Location -->
+                <div class="flex items-center gap-2 text-mediumseagreen-200">
+                  <img
+                    class="h-5 w-5"
+                    src="./public/location@2x.png"
+                    alt="Location Icon"
+                  />
+                  <span>160th Ave, Beaverton, OR 97007, US</span>
+                </div>
+
+                <!-- Registration Button -->
+                <div class="flex flex-row gap-3">
+                  <button
+                    class="flex items-center gap-2 border-none max-w-28 bg-mediumseagreen-300 text-white py-2 px-4 rounded-2xl shadow-md"
+                  >
+                    <span class="font-noto-sans">Register</span>
+                    <img
+                      class="h-5 w-5"
+                      src="./public/back-arrow-3@2x.png"
+                      alt="Arrow Icon"
+                    />
+                  </button>
+
+                  <!-- Days Left -->
+                  <div
+                    class="font-semibold justify-between self-center text-sm text-mediumseagreen-300"
+                  >
+                    (2 Days Left)
+                  </div>
                 </div>
               </div>
             </div>
@@ -280,10 +438,54 @@
       </div>
       <!-- hero section ends -->
 
-      <!-- Prayer Times  -->
+      <div
+        class="flex flex-col min-h-80 min-w-full p-10 gap-16 bg-mediumseagreen-300 my-16"
+        data-aos="slide-left"
+      >
+        <div class="">
+          <div
+            class="flex flex-col md:flex-row items-center justify-center gap-2 my-3"
+          >
+            <p
+              id="gregorian-date"
+              class="text-white text-center text-2xl font-bold m-1"
+            ></p>
+            <p
+              id="islamic-date"
+              class="text-white text-center text-2xl font-bold m-1"
+            ></p>
+          </div>
+          <div
+            id="prayer-times"
+            class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16"
+          ></div>
+          <div class="flex flex-row items-center gap-6 justify-center">
+            <button
+              class="flex items-center justify-around rounded-3xl gap-2 border-none font-bold max-w-32 bg-white text-mediumseagreen-300 py-2 px-4 shadow-md"
+            >
+              <p>Schedule</p>
+              <img
+                src="./public/back-arrow-5@2x.png"
+                class="h-[23px] w-[23px]"
+              />
+            </button>
+            <div class="flex justify-around items-center gap-4">
+              <div
+                class="rounded-[50%] bg-gainsboro-100 w-[17px] h-[17px] z-[1]"
+              ></div>
+              <div
+                class="rounded-[50%] bg-gray-400 w-[17px] h-[17px] z-[1]"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prayer Times 
 
       <div
         class="flex flex-col min-h-80 min-w-full p-10 gap-16 bg-mediumseagreen-300 my-16"
+        data-aos="slide-left"
       >
         <div class="">
           <div
@@ -296,7 +498,7 @@
               (7th Muharram 1446 AH)
             </p>
           </div>
-          <!-- Prayer Times -->
+           Prayer Times
           <div
             class="flex flex-wrap sm:flex-nowrap flex-row gap-10 items-center justify-around my-16"
           >
@@ -386,10 +588,10 @@
               </button>
               <p class="text-white m-0 text-xl">Isha</p>
             </div>
-          </div>
+          </div> -->
 
-          <!-- Button -->
-          <div class="flex flex-row items-center gap-6 justify-center">
+      <!-- Button -->
+      <!-- <div class="flex flex-row items-center gap-6 justify-center">
             <button
               class="flex items-center justify-around rounded-3xl gap-2 border-none font-bold max-w-32 bg-white text-mediumseagreen-300 py-2 px-4 shadow-md"
             >
@@ -409,87 +611,186 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Upcoming Events -->
       <div
-        class="flex flex-col justify-center items-center max-w-full gap-10 my-10"
+        class="flex flex-col justify-center items-center max-w-full gap-10 my-5"
       >
-        <div>
-          <h2 class="font-bold text-3xl">Upcoming Events</h2>
+        <div data-aos="fade-down">
+          <h2 class="font-bold text-3xl mb-6">Upcoming Events</h2>
         </div>
-        <div class="flex flex-row flex-wrap gap-12 justify-around items-center">
-          <div class="relative w-60 h-60">
-            <img
-              class="rounded-3xl h-full w-full"
-              src="./public/mask-group-4@2x.png"
-            />
-            <div class="absolute bottom-5 w-full flex justify-center">
-              <p
-                class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
-              >
-                Join the Community
-              </p>
+        <div class="container p-0">
+          <input type="radio" name="dot" id="one" checked />
+          <input type="radio" name="dot" id="two" />
+          <input type="radio" name="dot" id="three" />
+
+          <div class="main-card mb-5">
+            <div class="cards" data-aos="fade-up">
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-3xl h-full w-full"
+                    src="./public/Why-Islam-is-true-1536x1536.jpg"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Register
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-3xl h-full w-full"
+                    src="./public/Discussion-Navigating-Relationships.jpg"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Register
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-3xl h-full w-full"
+                    src="./public/traditional-iftar-fast-breaking.jpg"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Iftar
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cards" data-aos="slide-right">
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-3xl h-full w-full"
+                    src="./public/khutba.jpg"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Jumma Khutba
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-3xl h-full w-full"
+                    src="./public/larm-rmah-AEaTUnvneik-unsplash-scaled.jpg "
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Donate
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-2xl h-full w-full"
+                    src="./public/mask-group-4@2x.png"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Join the Community
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cards" data-aos="slide-right">
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-2xl h-full w-full"
+                    src="./public/mask-group-3@2x.png"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Become A Volunteer
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-3xl h-full w-full object-cover"
+                    src="./public/Learn-Quran-Reading-Basics-NEW-Top-Quran-Classes.jpg"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Register
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card w-80">
+                <div class="relative w-80 h-60">
+                  <img
+                    class="rounded-3xl h-full w-full object-cover"
+                    src="./public/khutba.jpg"
+                    alt="Jumma Khutba"
+                  />
+                  <div class="absolute bottom-5 w-full flex justify-center">
+                    <p
+                      class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
+                    >
+                      Jumma Khutba
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="relative w-60 h-60">
-            <img
-              class="rounded-3xl h-full w-full"
-              src="./public/mask-group-4@2x.png"
-            />
-            <div class="absolute bottom-5 w-full flex justify-center">
-              <p
-                class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
-              >
-                Join the Community
-              </p>
-            </div>
+
+          <div class="button">
+            <label for="one" class="active one"></label>
+            <label for="two" class="two"></label>
+            <label for="three" class="three"></label>
           </div>
-          <div class="relative w-60 h-60">
-            <img
-              class="rounded-3xl h-full w-full"
-              src="./public/mask-group-4@2x.png"
-            />
-            <div class="absolute bottom-5 w-full flex justify-center">
-              <p
-                class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
-              >
-                Join the Community
-              </p>
-            </div>
-          </div>
-          <div class="relative w-60 h-60">
-            <img
-              class="rounded-3xl h-full w-full"
-              src="./public/mask-group-4@2x.png"
-            />
-            <div class="absolute bottom-5 w-full flex justify-center">
-              <p
-                class="w-[80%] text-center font-semibold text-black bg-white bg-opacity-100 py-2 px-2 rounded-2xl"
-              >
-                Join the Community
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-around items-center gap-4">
-          <div
-            class="rounded-[50%] bg-mediumseagreen-300 my-8 w-[17px] h-[17px] z-[1]"
-          ></div>
-          <div class="rounded-[50%] bg-gray-400 w-[17px] h-[17px] z-[1]"></div>
-          <div class="rounded-[50%] bg-gray-400 w-[17px] h-[17px] z-[1]"></div>
         </div>
       </div>
-
       <!-- Services -->
 
-      <div class="flex flex-col justify-around items-center gap-5">
+      <div class="flex flex-col justify-around items-center gap-5 my-5">
         <div>
-          <h2 class="font-bold text-3xl">Our Services</h2>
+          <h2 class="font-bold text-3xl" data-aos="fade-in">Our Services</h2>
         </div>
 
         <!-- Service 1 -->
-        <div class="flex flex-row flex-wrap justify-around items center">
+        <div
+          class="flex flex-row flex-wrap justify-around items center"
+          data-aos="slide-left"
+        >
           <div class="flex flex-col gap-12 justify-center items-center p-10">
             <div
               class="min-h-40 flex flex-col min-w-40 bg-mediumseagreen-300 justify-center items-center rounded-full"
@@ -554,6 +855,7 @@
       <!-- Newsletter starts -->
       <div
         class="flex flex-col md:flex-row mx-auto max-w-4xl py-10 px-6 md:p-16 bg-slate-100 rounded-3xl my-10 items-center justify-center md:items-start"
+        data-aos="fade-in"
       >
         <div class="w-full">
           <div
@@ -614,9 +916,14 @@
                 Follow Us
               </button>
               <div class="flex gap-3">
-                <div class="bg-mediumseagreen-300 rounded-full w-8 h-8"></div>
-                <div class="bg-mediumseagreen-300 rounded-full w-8 h-8"></div>
-                <div class="bg-mediumseagreen-300 rounded-full w-8 h-8"></div>
+                <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                  <img src="./public/Facebook-icon.png" alt="facebook icon" />
+                </div>
+                <div class="bg-mediumseagreen-300 rounded-full w-8 h-8">
+                  <img src="./public/whatsapp-icon.svg" />
+                </div>
+                <!-- <div class="bg-mediumseagreen-300 rounded-full w-8 h-8 flex justify-center items-center">
+                <img src="./public/email-icon.webp" > -->
               </div>
             </div>
           </div>
@@ -636,5 +943,29 @@
         });
       });
     </script>
+    <script>
+      let counter = 1; // Start with the first slide
+      const totalSlides = 3; // Total number of slides
+      function updateSlides() {
+        const slideIndex = counter % totalSlides;
+        document.getElementById("one").checked = slideIndex === 0;
+        document.getElementById("two").checked = slideIndex === 1;
+        document.getElementById("three").checked = slideIndex === 2;
+        counter++;
+      }
+      setInterval(updateSlides, 5000);
+      updateSlides();
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 90,
+        duration: 3000,
+        once: true,
+      });
+    </script>
+
+    
   </body>
 </html>
