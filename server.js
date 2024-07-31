@@ -27,7 +27,25 @@ app.get('/api/prayer-times', (req, res) => {
         });
 });
 
+app.get('/api/iqamah-times', (req, res) => {
+    const iqamahTimes = [];
+
+    fs.createReadStream('iqamah-times.csv')
+        .pipe(csv())
+        .on('data', (row) => {
+            iqamahTimes.push(row);
+        })
+        .on('end', () => {
+            console.log('CSV file successfully processed');
+            console.log('Iqamah Times Data:', iqamahTimes); // Log the data to verify
+            res.json(iqamahTimes);
+        })
+        .on('error', (err) => {
+            console.error('Error reading CSV file:', err);
+            res.status(500).json({ error: 'Failed to read CSV file' });
+        });
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
