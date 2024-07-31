@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'src')));
 app.get('/api/prayer-times', (req, res) => {
     const prayerTimes = [];
 
-    fs.createReadStream('prayer-times.csv')
+    fs.createReadStream('./src/public/prayer-times.csv')
         .pipe(csv())
         .on('data', (row) => {
             prayerTimes.push(row);
@@ -30,7 +30,7 @@ app.get('/api/prayer-times', (req, res) => {
 app.get('/api/iqamah-times', (req, res) => {
     const iqamahTimes = [];
 
-    fs.createReadStream('iqamah-times.csv')
+    fs.createReadStream('/src/public/iqamah-times.csv')
         .pipe(csv())
         .on('data', (row) => {
             iqamahTimes.push(row);
