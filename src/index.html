@@ -208,6 +208,14 @@
         .card {
           width: 100%;
         }
+        body {
+          overflow-x: hidden;
+        }
+
+        /* Apply to specific elements to ensure they do not cause overflow */
+        .container {
+          overflow-x: hidden;
+        }
       }
     </style>
   </head>
@@ -261,9 +269,7 @@
               <a href="#" class="no-underline text-black hover:text-gray-700"
                 >Services</a
               >
-              <a
-                href="#"
-                class="no-underline text-black hover:text-gray-700"
+              <a href="#" class="no-underline text-black hover:text-gray-700"
                 >Events</a
               >
               <div class="relative group">
@@ -326,9 +332,7 @@
             <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
               >Services</a
             >
-            <a
-              href="#"
-              class="no-underline text-black hover:text-gray-700 py-2"
+            <a href="#" class="no-underline text-black hover:text-gray-700 py-2"
               >Events</a
             >
             <div class="relative">
@@ -397,15 +401,22 @@
                   <button
                     class="flex max-w-28 max-h-[48px] my-6 border-none custom-button text-white py-3 items-center hover:text-black hover:bg-slate-300 hover:shadow-sm justify-center font-medium px-5 min-w-28 font-noto-sans rounded-18xl"
                     data-aos="fade-in"
-                  ><a href="https://bilalmasjid.com/Join/EmailListSubscription/Default.aspx">
-                    Join Us
-                    </a><!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
+                  >
+                    <a
+                      href="https://bilalmasjid.com/Join/EmailListSubscription/Default.aspx"
+                    >
+                      Join Us </a
+                    ><!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
                   </button>
                   <button
                     class="flex max-w-28 my-6 border-none custom-button text-white py-3 items-center justify-center font-medium px-6 min-w-28 hover:text-black hover:bg-slate-300 hover:shadow-sm font-noto-sans rounded-18xl"
                     data-aos="fade-in"
-                  ><a href="https://us.mohid.co/or/portland/bma/masjid/online/donation">Donate</a>
-            
+                  >
+                    <a
+                      href="https://us.mohid.co/or/portland/bma/masjid/online/donation"
+                      >Donate</a
+                    >
+
                     <!-- <img class="h-1 w-1" src="./public/back-arrow-1@2x.png"/> -->
                   </button>
                 </div>
@@ -897,7 +908,9 @@
         </div>
         <!-- Services -->
 
-        <div class="flex flex-col justify-around items-center gap-5 my-5 overflow-x-hidden">
+        <div
+          class="flex flex-col justify-around items-center gap-5 my-5 overflow-x-hidden"
+        >
           <div
             class="relative w-full h-60 flex justify-center bg-cover-img bg-[url('./public/background.png')]"
           >
@@ -920,7 +933,7 @@
           >
             <div class="flex flex-col gap-12 justify-center items-center p-10">
               <div
-                class="min-h-40 flex flex-col min-w-40  bg-mediumseagreen-300 justify-center items-center rounded-full"
+                class="min-h-40 flex flex-col min-w-40 bg-mediumseagreen-300 justify-center items-center rounded-full"
               >
                 <img
                   class="w-20 h-20 text-center items-center justify-center"
