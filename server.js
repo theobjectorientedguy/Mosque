@@ -30,7 +30,7 @@ app.get('/api/prayer-times', (req, res) => {
 app.get('/api/iqamah-times', (req, res) => {
     const iqamahTimes = [];
 
-    fs.createReadStream('/src/public/iqamah-times.csv')
+    fs.createReadStream('./src/public/iqamah-times.csv')
         .pipe(csv())
         .on('data', (row) => {
             iqamahTimes.push(row);
