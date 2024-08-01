@@ -14,35 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         console.log("Fetched Times Data:", data); // Log data received from server
 
-        // Get today's date, day name, month, and year
         const now = new Date();
-        const today = now.getDate(); // Numeric day of the month
-        const todayDay = now.toLocaleDateString("en-US", { weekday: "long" }); // Get the current day name
-        const currentMonth = now.toLocaleDateString("en-US", { month: "long" }); // Get the current month
-        const currentYear = now.getFullYear(); // Get the current year
+        const today = now.getDate();
+        const todayDay = now.toLocaleDateString("en-US", { weekday: "long" });
+        const currentMonth = now.toLocaleDateString("en-US", { month: "long" });
+        const currentYear = now.getFullYear();
 
-        // Find today's times
         const todayTimes = data.find(
           (pt) =>
             pt.Date == today && pt.Day.toLowerCase() === todayDay.toLowerCase()
         );
 
         if (todayTimes) {
-          // Update date display
           gregorianDate.textContent = `${todayDay} ${today} ${currentMonth}, ${currentYear}`;
           islamicDate.textContent = showingAdhanTimes
             ? `Prayer (Adhaan) Time`
             : `Prayer (Iqamah) Time`;
 
-          // Prayer names and their icons
-          const prayers = [
-            "Fajr",
-            "Sunrise",
-            "Dhuhr",
-            "Asar",
-            "Maghrib",
-            "Isha",
-          ];
+          const prayers = ["Fajr", "Sunrise", "Dhuhr", "Asar", "Maghrib", "Isha"];
           const icons = {
             Fajr: "sunrise@2x.png",
             Sunrise: "sunrise-1@2x.png",
@@ -52,23 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
             Isha: "moon-and-stars@2x.png",
           };
 
-          // Clear existing content
           prayerTimesContainer.innerHTML = "";
 
-          // Find the next prayer time
-          const currentTime = `${now.getHours()}:${
-            now.getMinutes() < 10 ? "0" : ""
-          }${now.getMinutes()} ${now.getHours() >= 12 ? "PM" : "AM"}`;
+          const currentTime = now.getHours() * 60 + now.getMinutes();
           let nextPrayer = null;
 
-          for (const prayer of prayers) {
-            if (todayTimes[prayer] > currentTime) {
-              nextPrayer = prayer;
-              break;
-            }
-          }
+          prayers.forEach((prayer, index) => {
+            const [time, period] = todayTimes[prayer].split(" ");
+            const [hours, minutes] = time.split(":").map(Number);
+            const prayerTime =
+              (hours % 12) * 60 + minutes + (period === "PM" ? 720 : 0);
 
-          // Create prayer times elements
+            if (nextPrayer === null && prayerTime > currentTime) {
+              nextPrayer = prayer;
+            }
+          });
+
           prayers.forEach((prayer) => {
             const prayerDiv = document.createElement("div");
             prayerDiv.classList.add(
@@ -81,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
               "rounded-3xl"
             );
             if (prayer === nextPrayer) {
-              prayerDiv.classList.add("border-white", "border-2"); // Highlight border for the next prayer time
+              prayerDiv.classList.add("border-white", "border-2");
             }
 
             const img = document.createElement("img");
@@ -104,8 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
               "px-4",
               "rounded-2xl"
             );
-            button.style.fontSize = "1.25rem"; // Increase font size for the time
-            button.textContent = todayTimes[prayer]; // Time in AM/PM format
+            button.style.fontSize = "1.25rem";
+            button.textContent = todayTimes[prayer];
 
             const prayerName = document.createElement("p");
             prayerName.classList.add("text-white", "m-0", "text-xl");
@@ -118,12 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
             prayerTimesContainer.appendChild(prayerDiv);
           });
 
-          // Add fade-in effect
           prayerTimesContainer.classList.remove("fade-out", "hide");
           prayerTimesContainer.classList.add("fade-in", "show");
         } else {
-          prayerTimesContainer.textContent =
-            "No prayer times available for today.";
+          prayerTimesContainer.textContent = "No prayer times available for today.";
         }
       })
       .catch((error) => {
@@ -131,10 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Initial fetch
   fetchPrayerTimes();
 
-  // Function to toggle fade effect
   function toggleFadeEffect() {
     const elements = [prayerTimesContainer, gregorianDate, islamicDate];
     elements.forEach((element) => {
@@ -146,12 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           element.classList.remove("hide");
           element.classList.add("fade-in", "show");
-        }, 10); // Short delay to ensure the 'hide' class is removed after fetching new data
-      }, 500); // Wait for the fade-out transition to complete before updating content
+        }, 10);
+      }, 500);
     });
   }
 
-  // Switch between Adhan and Iqamah times
   switchScheduleButton.addEventListener("click", () => {
     showingAdhanTimes = !showingAdhanTimes;
     toggleFadeEffect();
