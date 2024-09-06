@@ -8,17 +8,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function fetchPrayerTimes() {
     const url = showingAdhanTimes ? "/api/prayer-times" : "/api/iqamah-times";
+    console.log('Fetching prayer times from URL:', url);
 
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        console.log('HTTP Response Status:', response.status); // Debugging line
+        return response.json();
+      })
       .then((data) => {
-        console.log("Fetched Times Data:", data); // Log data received from server
+        console.log("Fetched Times Data:", data); // Log the data received from server
 
         const now = new Date();
         const today = now.getDate();
         const todayDay = now.toLocaleDateString("en-US", { weekday: "long" });
         const currentMonth = now.toLocaleDateString("en-US", { month: "long" });
         const currentYear = now.getFullYear();
+
+        console.log("Current Date:", today);
+        console.log("Current Day:", todayDay);
 
         const todayTimes = data.find(
           (pt) =>
@@ -55,7 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (nextPrayer === null && prayerTime > currentTime) {
               nextPrayer = prayer;
             }
+
+            console.log(`Prayer: ${prayer}, Time: ${prayerTime}, Current Time: ${currentTime}`); // Debugging line
           });
+
+          console.log("Next Prayer:", nextPrayer);
 
           prayers.forEach((prayer) => {
             const prayerDiv = document.createElement("div");
@@ -109,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
           prayerTimesContainer.classList.remove("fade-out", "hide");
           prayerTimesContainer.classList.add("fade-in", "show");
         } else {
+          console.log('No prayer times available for today.'); // Debugging line
           prayerTimesContainer.textContent = "No prayer times available for today.";
         }
       })
